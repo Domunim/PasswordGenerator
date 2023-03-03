@@ -68,6 +68,7 @@
             this.CreateUserButton.TabIndex = 22;
             this.CreateUserButton.Text = "Create new user";
             this.CreateUserButton.UseVisualStyleBackColor = false;
+            this.CreateUserButton.Click += new System.EventHandler(this.CreateUserButton_Click);
             // 
             // ExitButton
             // 
@@ -81,6 +82,7 @@
             this.ExitButton.TabIndex = 21;
             this.ExitButton.Text = "Exit";
             this.ExitButton.UseVisualStyleBackColor = false;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
             // UsersPasswordTextbox
             // 
@@ -132,6 +134,7 @@
             this.DeleteUserButton.TabIndex = 25;
             this.DeleteUserButton.Text = "Delete user";
             this.DeleteUserButton.UseVisualStyleBackColor = false;
+            this.DeleteUserButton.Click += new System.EventHandler(this.DeleteUserButton_Click);
             // 
             // UserChoiceComboBox
             // 
@@ -155,12 +158,13 @@
             this.LoginButton.TabIndex = 27;
             this.LoginButton.Text = "Log in";
             this.LoginButton.UseVisualStyleBackColor = false;
+            this.LoginButton.Click += new System.EventHandler(this.LoginButton_Click);
             // 
             // PasswordGeneratorHeader
             // 
             this.PasswordGeneratorHeader.AutoSize = true;
             this.PasswordGeneratorHeader.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.PasswordGeneratorHeader.Location = new System.Drawing.Point(229, 137);
+            this.PasswordGeneratorHeader.Location = new System.Drawing.Point(257, 137);
             this.PasswordGeneratorHeader.Name = "PasswordGeneratorHeader";
             this.PasswordGeneratorHeader.Size = new System.Drawing.Size(279, 40);
             this.PasswordGeneratorHeader.TabIndex = 28;
@@ -169,7 +173,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(320, 37);
+            this.pictureBox1.Location = new System.Drawing.Point(352, 37);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(97, 97);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

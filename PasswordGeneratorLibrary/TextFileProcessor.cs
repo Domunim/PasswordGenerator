@@ -14,7 +14,7 @@ namespace PasswordGeneratorLibrary.TextFileTools
         /// </summary>
         /// <param name="fileName"></param>
         /// <returns>a full text file path</returns>
-        public static string FullFilePath(this string fileName) // UserModel.csv
+        public static string FullFilePath(this string fileName) // {Something}Model.csv
         {
             return $"C:\\Users\\User\\source\\repos\\PasswordGenerator\\data\\{fileName}";
         }
@@ -56,35 +56,76 @@ namespace PasswordGeneratorLibrary.TextFileTools
             return output;
         }
 
-        // Checks if a new username is already used
-
-        public static bool CheckIfUsedUsername(this List<UserModel> models, UserModel newUser)
+        /// <summary>
+        /// Converts all passwords to a list.
+        /// </summary>
+        /// <param name="lines"></param>
+        /// <returns>a list of PasswordModels</returns>
+        public static List<PasswordModel> ConvertToPasswordModels(this List<string> lines)
         {
-            string newUserName = newUser.UserName;
+            List<PasswordModel> output = new();
 
-            foreach (UserModel u in models)
+            foreach (string line in lines)
             {
+                string[] columns = line.Split(',');
 
-                if (u.UserName == newUserName)
-                {
-                    return false;
-                }
-
-                else
-                {
-                    return true;
-                }
-
+                PasswordModel p = new();
+                p.Owner = columns[0];
+                p.GeneratedPassword = columns[1];
+                output.Add(p);
             }
-            // else
-            // {
-            // TODO - Pop up a message box that the username is already used. 
-            // }
+            return output;
         }
 
 
-        // Convert all users to list<string>
-        // Save the list<string> to the text file
+        // TODO - Method that checks if a username is used
+
+        /// <summary>
+        /// Checks if a chosen username is already used.
+        /// </summary>
+        /// <param name="models"></param>
+        /// <param name="newUser"></param>
+        /// <returns>boolean 'true' if username is used</returns>
+        //public static bool CheckIfUsedUsername(this List<UserModel> models, UserModel newUser)
+        //{
+        //    string newUserName = newUser.UserName;
+
+
+
+        //   foreach (UserModel u in models)
+        //    {
+        //        if (u.UserName == newUserName)
+        //        {
+        //            return true;
+        //        }
+        //        else
+        //        {
+        //            return false;
+        //        }
+        //    }
+
+        //}
+
+        //bool usedUsername = false;
+
+        //do while (!usedUsername)
+        //{
+        //   foreach (UserModel u in models)
+        //   {
+        //      if (u.UserName == newUserName)
+        //
+        //      {
+        //          return true;
+        //      }
+
+        //      else
+
+        //      {
+        //          return false;
+        //      }
+        //}
+
+        // Convert all users to a List<string> & save it to a text file
 
         public static void SaveToUserFile(this List<UserModel> models, string fileName)
         {
@@ -93,6 +134,21 @@ namespace PasswordGeneratorLibrary.TextFileTools
             foreach (UserModel u in models)
             {
                 lines.Add($"{u.UserName},{u.UserPassword}");
+            }
+
+            File.WriteAllLines(fileName.FullFilePath(), lines);
+
+        }
+
+        // Convert all passwords to a List<string> & save it to a text file
+
+        public static void SaveToPasswordFile(this List<PasswordModel> models, string fileName)
+        {
+            List<string> lines = new();
+
+            foreach (PasswordModel p in models)
+            {
+                lines.Add($"{p.Owner},{p.GeneratedPassword}");
             }
 
             File.WriteAllLines(fileName.FullFilePath(), lines);

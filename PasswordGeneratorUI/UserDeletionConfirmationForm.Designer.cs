@@ -46,6 +46,7 @@
             this.UserDeletionConfirmationButton.TabIndex = 11;
             this.UserDeletionConfirmationButton.Text = "Yes";
             this.UserDeletionConfirmationButton.UseVisualStyleBackColor = false;
+            this.UserDeletionConfirmationButton.Click += new System.EventHandler(this.UserDeletionConfirmationButton_Click);
             // 
             // UserDeletionRejectionButton
             // 
@@ -59,6 +60,7 @@
             this.UserDeletionRejectionButton.TabIndex = 10;
             this.UserDeletionRejectionButton.Text = "No";
             this.UserDeletionRejectionButton.UseVisualStyleBackColor = false;
+            this.UserDeletionRejectionButton.Click += new System.EventHandler(this.UserDeletionRejectionButton_Click);
             // 
             // UserDeleteHeader
             // 

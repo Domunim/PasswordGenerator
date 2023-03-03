@@ -31,11 +31,17 @@ namespace PasswordGeneratorUI
                 model.UserName = UsernameValue.Text;
                 model.UserPassword = UserPasswordValue.Text;
 
-                // TODO - connect using a TextFileConnector instance (below)
-
-                // TextFileConnector.CreateUser(model);
+                TextFileConnector txtConnector = new();
                 
-                this.Close();
+                txtConnector.CreateUser(model);
+
+                // CheckIfUsed here? Must be refactored to not use models
+                // else
+                // {
+                // MessageBox.Show("Please choose a username that is not used."); 
+                // }
+
+                Close();
             }
             else
             {

@@ -61,7 +61,9 @@
             this.CreateUserButton.TabIndex = 14;
             this.CreateUserButton.Text = "Create a new user";
             this.CreateUserButton.UseVisualStyleBackColor = false;
-            this.CreateUserButton.Click += new System.EventHandler(this.CreateUserButton_Click);
+            CreateUserForm createUserForm = this;
+            EventHandler eventHandler = new System.EventHandler(createUserForm.CreateUserButton_Click);
+            this.CreateUserButton.Click += eventHandler;
             // 
             // BackButton
             // 

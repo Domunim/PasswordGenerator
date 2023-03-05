@@ -17,23 +17,80 @@ namespace PasswordGeneratorUI
         public GeneratePasswordForm()
         {
             InitializeComponent();
+
         }
-         
+
+        const string allCharType = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz" +
+                                   "0123456789~`!@#$%^&*()_-+={}[]:;<>,.?/";
         string newPassword = "";
+
+        private void SimpleRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SimpleRadioButton.Checked)
+            {
+                SimplePasswordGroupBox.Visible = true;
+            }
+            else
+            {
+                SimplePasswordGroupBox.Visible = false;
+            }
+        }
 
         private void GeneratePasswordButton_Click(object sender, EventArgs e)
         {
+            int finalLength = Convert.ToInt32(LenghtTrackBar.Value);
 
-
-            if () // simple selected
+            if (SimpleRadioButton.Checked)
             {
-                // SimplePasswordGroupBox Visible = true
-
                 if (ValidateForm())
                 {
+                    string keyword = KeywordTextbox.Text;
+                    string charType = "";
 
-                    // simple - takes a keyword, checkboxes and replace/add until lenght
-                    // sets the string to a newPassword variable
+                    if (keyword.Length <= finalLength)
+                    {
+                        if (CapitalLettersCheckBox.Checked)
+                        {
+                            charType += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                        }
+
+                        if (LowercaseLettersCheckBox.Checked)
+                        {
+                            charType += "abcdefghijklmnopqrstuvwxyz";
+                        }
+
+                        if (NumbersCheckBox.Checked)
+                        {
+                            charType += "0123456789";
+                        }
+
+                        if (SpecialCharsCheckBox.Checked)
+                        {
+                            charType += "~`!@#$%^&*()_-+={}[]:;<>,.?/";
+                        }
+
+                        if (ReplaceRadioButton.Checked)
+                        {
+                            newPassword = TextFileConnector.GenerateSimplePassword(finalLength, TextFileConnector.ReplaceKeywordChars(keyword), charType);
+                        }
+
+                        else
+                        {
+                            if (charType != "")
+                            {
+                                newPassword = TextFileConnector.GenerateSimplePassword(finalLength, keyword, charType);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Choose at least one type of characters to add.");
+                            }
+
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("The length of keyword cannot exceed the password's length.");
+                    }
 
                 }
                 else
@@ -42,23 +99,18 @@ namespace PasswordGeneratorUI
                 }
             }
 
-            if () // complex selected
+            if (ComplexRadioButton.Checked)
             {
-                // SimplePasswordGroupBox Visible = false
-                
-                //random string of a given lenght
-
-                // sets the string to a newPassword variable
+                newPassword = TextFileConnector.GenerateRandomPart(finalLength, allCharType);
             }
             
-            // GeneratedPasswordLabel.Text = newPassword;
-
+            GeneratedPasswordLabel.Text = $"{newPassword}";
         }
 
         /// <summary>
         /// Checks if all requirements for a password are provided.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>boolean if all requirements are met.</returns>
         private bool ValidateForm()
         {
             bool output = true;
@@ -72,19 +124,19 @@ namespace PasswordGeneratorUI
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            if (GeneratedPasswordLabel != null)
+            if (newPassword != "")
             {
                 // Saves the value of the newPassword to a file, refreshes the listbox
 
                 PasswordModel p = new();
-                p.Owner = // logged user - how to pass it from another form?
+                p.Owner = // TODO - pass a logged user from another form
                 p.GeneratedPassword = newPassword;
 
                 TextFileConnector txtConnector = new();
 
                 txtConnector.CreatePassword(p);
 
-                // refreshes the listbox in manager form
+                // TODO - check if action refreshes the listbox in manager form
 
                 Close();
 
@@ -98,6 +150,11 @@ namespace PasswordGeneratorUI
         private void BackButton_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void LenghtTrackBar_Scroll(object sender, EventArgs e)
+        {
+            CharacterNumberLabel.Text = LenghtTrackBar.Value.ToString();
         }
     }
 }

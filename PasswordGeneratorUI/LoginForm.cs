@@ -19,15 +19,17 @@ namespace PasswordGeneratorUI
 
         private void CreateUserButton_Click(object sender, EventArgs e)
         {
-            //Application.Run(new CreateUserForm());
+            CreateUserForm createUserForm = new();
+            createUserForm.Show();
         }
 
         private void DeleteUserButton_Click(object sender, EventArgs e)
         {
             if (ValidateForm())
             {
-                // Pass selected username to Deletion Form
-                //UserDeletionConfirmationForm();
+                // TODO - Pass selected username to Deletion Form
+                UserDeletionConfirmationForm deleteUserForm = new();
+                deleteUserForm.Show();
             }
             else
             {
@@ -39,9 +41,11 @@ namespace PasswordGeneratorUI
         {         
             if (ValidateForm())
             {
-                //Take username
-                // passes to the form to display only passwords assigned to the user
-                //open PasswordManagerMainScreen();
+                // Take username and passes to the form to display only passwords assigned to the user
+
+                PasswordManagerMainScreen mainScreen = new();
+                mainScreen.Show();
+
             }
             else
             {
@@ -56,19 +60,21 @@ namespace PasswordGeneratorUI
         /// <returns></returns>
         private bool ValidateForm()
         {
-            bool output = true;
-            // TODO - tweak the combobox selection
-            if (UserChoiceComboBox.selection == 0) 
-            {
-                output = false;
-            }
-            // TODO - load a password from a UserModel file and check if it is correct
-            if (UsersPasswordTextbox.Text != "blabla")
-            {
-                output = false;
-            }
 
-            return output;
+            if (UserChoiceComboBox.SelectedItem == null)
+            {
+                return false;
+            }                
+            
+            //TODO - load a password from a UserModel file and check if it is correct,
+            //add a method's argument of username to fetch the password
+
+            else if (UsersPasswordTextbox.Text != "password_loaded_placeholder") // password loaded from the file
+            {
+                return false;
+            }
+            
+            return true;
         }
     }
 }

@@ -15,11 +15,9 @@ namespace PasswordGeneratorUI
         public UserDeletionConfirmationForm()
         {
             InitializeComponent();
+            
         }
         
-        // Takes a username of user to be deleted
-        //UserDeleteHeader.Text = $"Are you sure to delete {deletingUser.ToString()}?";
-
         private void UserDeletionRejectionButton_Click(object sender, EventArgs e)
         {
             Close();
@@ -27,15 +25,16 @@ namespace PasswordGeneratorUI
 
         private void UserDeletionConfirmationButton_Click(object sender, EventArgs e)
         {
-            // TODO - delete user
-            // takes a username from UserDeleteLabel
+            // TODO - delete user logic
+
+            // takes a username from deletingUser
             // if == deletes from the List
             // saves back
-            // closes the form
 
             MessageBox.Show("The user has been deleted.");
 
             Close();
         }
+
     }
 }

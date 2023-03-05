@@ -50,6 +50,7 @@
             this.PasswordTypeGroupBox = new System.Windows.Forms.GroupBox();
             this.CharacterNumberLabel = new System.Windows.Forms.Label();
             this.CharactersLabel = new System.Windows.Forms.Label();
+            this.LowercaseLettersCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.LenghtTrackBar)).BeginInit();
             this.SimplePasswordGroupBox.SuspendLayout();
             this.PasswordTypeGroupBox.SuspendLayout();
@@ -61,9 +62,9 @@
             this.GeneratePasswordHeader.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.GeneratePasswordHeader.Location = new System.Drawing.Point(413, 27);
             this.GeneratePasswordHeader.Name = "GeneratePasswordHeader";
-            this.GeneratePasswordHeader.Size = new System.Drawing.Size(281, 40);
+            this.GeneratePasswordHeader.Size = new System.Drawing.Size(347, 40);
             this.GeneratePasswordHeader.TabIndex = 35;
-            this.GeneratePasswordHeader.Text = "Generate Password";
+            this.GeneratePasswordHeader.Text = "Generate new password";
             // 
             // GeneratePasswordButton
             // 
@@ -71,7 +72,7 @@
             this.GeneratePasswordButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.GeneratePasswordButton.Font = new System.Drawing.Font("Segoe UI Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.GeneratePasswordButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
-            this.GeneratePasswordButton.Location = new System.Drawing.Point(443, 665);
+            this.GeneratePasswordButton.Location = new System.Drawing.Point(436, 646);
             this.GeneratePasswordButton.Name = "GeneratePasswordButton";
             this.GeneratePasswordButton.Size = new System.Drawing.Size(220, 44);
             this.GeneratePasswordButton.TabIndex = 39;
@@ -85,7 +86,7 @@
             this.BackButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BackButton.Font = new System.Drawing.Font("Segoe UI Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BackButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
-            this.BackButton.Location = new System.Drawing.Point(952, 897);
+            this.BackButton.Location = new System.Drawing.Point(956, 939);
             this.BackButton.Name = "BackButton";
             this.BackButton.Size = new System.Drawing.Size(125, 44);
             this.BackButton.TabIndex = 38;
@@ -96,32 +97,33 @@
             // NewPasswordLabel
             // 
             this.NewPasswordLabel.AutoSize = true;
-            this.NewPasswordLabel.Font = new System.Drawing.Font("Segoe UI Semilight", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.NewPasswordLabel.Location = new System.Drawing.Point(303, 737);
+            this.NewPasswordLabel.Font = new System.Drawing.Font("Segoe UI Semilight", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.NewPasswordLabel.Location = new System.Drawing.Point(318, 768);
             this.NewPasswordLabel.Name = "NewPasswordLabel";
-            this.NewPasswordLabel.Size = new System.Drawing.Size(232, 65);
+            this.NewPasswordLabel.Size = new System.Drawing.Size(141, 40);
             this.NewPasswordLabel.TabIndex = 37;
             this.NewPasswordLabel.Text = "Password:";
             // 
             // SimpleRadioButton
             // 
             this.SimpleRadioButton.AutoSize = true;
-            this.SimpleRadioButton.Location = new System.Drawing.Point(554, 34);
+            this.SimpleRadioButton.Checked = true;
+            this.SimpleRadioButton.Location = new System.Drawing.Point(147, 34);
             this.SimpleRadioButton.Name = "SimpleRadioButton";
             this.SimpleRadioButton.Size = new System.Drawing.Size(176, 34);
             this.SimpleRadioButton.TabIndex = 41;
+            this.SimpleRadioButton.TabStop = true;
             this.SimpleRadioButton.Text = "Simple Password";
             this.SimpleRadioButton.UseVisualStyleBackColor = true;
+            this.SimpleRadioButton.CheckedChanged += new System.EventHandler(this.SimpleRadioButton_CheckedChanged);
             // 
             // ComplexRadioButton
             // 
             this.ComplexRadioButton.AutoSize = true;
-            this.ComplexRadioButton.Checked = true;
-            this.ComplexRadioButton.Location = new System.Drawing.Point(110, 34);
+            this.ComplexRadioButton.Location = new System.Drawing.Point(477, 34);
             this.ComplexRadioButton.Name = "ComplexRadioButton";
             this.ComplexRadioButton.Size = new System.Drawing.Size(196, 34);
             this.ComplexRadioButton.TabIndex = 42;
-            this.ComplexRadioButton.TabStop = true;
             this.ComplexRadioButton.Text = "Complex Password";
             this.ComplexRadioButton.UseVisualStyleBackColor = true;
             // 
@@ -146,27 +148,28 @@
             // LenghtTrackBar
             // 
             this.LenghtTrackBar.Cursor = System.Windows.Forms.Cursors.SizeWE;
-            this.LenghtTrackBar.Location = new System.Drawing.Point(303, 585);
-            this.LenghtTrackBar.Maximum = 20;
+            this.LenghtTrackBar.Location = new System.Drawing.Point(244, 585);
+            this.LenghtTrackBar.Maximum = 30;
             this.LenghtTrackBar.Minimum = 6;
             this.LenghtTrackBar.Name = "LenghtTrackBar";
-            this.LenghtTrackBar.Size = new System.Drawing.Size(511, 45);
+            this.LenghtTrackBar.Size = new System.Drawing.Size(643, 45);
             this.LenghtTrackBar.TabIndex = 45;
             this.LenghtTrackBar.Value = 6;
+            this.LenghtTrackBar.Scroll += new System.EventHandler(this.LenghtTrackBar_Scroll);
             // 
             // LenghtLabel
             // 
             this.LenghtLabel.AutoSize = true;
-            this.LenghtLabel.Location = new System.Drawing.Point(389, 535);
+            this.LenghtLabel.Location = new System.Drawing.Point(379, 535);
             this.LenghtLabel.Name = "LenghtLabel";
-            this.LenghtLabel.Size = new System.Drawing.Size(146, 30);
+            this.LenghtLabel.Size = new System.Drawing.Size(235, 30);
             this.LenghtLabel.TabIndex = 46;
-            this.LenghtLabel.Text = "Choose lenght:";
+            this.LenghtLabel.Text = "Choose password lenght:";
             // 
             // CapitalLettersCheckBox
             // 
             this.CapitalLettersCheckBox.AutoSize = true;
-            this.CapitalLettersCheckBox.Location = new System.Drawing.Point(314, 99);
+            this.CapitalLettersCheckBox.Location = new System.Drawing.Point(255, 116);
             this.CapitalLettersCheckBox.Name = "CapitalLettersCheckBox";
             this.CapitalLettersCheckBox.Size = new System.Drawing.Size(150, 34);
             this.CapitalLettersCheckBox.TabIndex = 47;
@@ -176,7 +179,7 @@
             // NumbersCheckBox
             // 
             this.NumbersCheckBox.AutoSize = true;
-            this.NumbersCheckBox.Location = new System.Drawing.Point(314, 139);
+            this.NumbersCheckBox.Location = new System.Drawing.Point(255, 156);
             this.NumbersCheckBox.Name = "NumbersCheckBox";
             this.NumbersCheckBox.Size = new System.Drawing.Size(113, 34);
             this.NumbersCheckBox.TabIndex = 48;
@@ -186,7 +189,7 @@
             // SpecialCharsCheckBox
             // 
             this.SpecialCharsCheckBox.AutoSize = true;
-            this.SpecialCharsCheckBox.Location = new System.Drawing.Point(470, 382);
+            this.SpecialCharsCheckBox.Location = new System.Drawing.Point(418, 156);
             this.SpecialCharsCheckBox.Name = "SpecialCharsCheckBox";
             this.SpecialCharsCheckBox.Size = new System.Drawing.Size(186, 34);
             this.SpecialCharsCheckBox.TabIndex = 49;
@@ -199,7 +202,7 @@
             this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SaveButton.Font = new System.Drawing.Font("Segoe UI Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SaveButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
-            this.SaveButton.Location = new System.Drawing.Point(443, 843);
+            this.SaveButton.Location = new System.Drawing.Point(436, 887);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(220, 44);
             this.SaveButton.TabIndex = 50;
@@ -232,20 +235,22 @@
             // GeneratedPasswordLabel
             // 
             this.GeneratedPasswordLabel.AutoSize = true;
-            this.GeneratedPasswordLabel.Font = new System.Drawing.Font("Segoe UI Semilight", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.GeneratedPasswordLabel.Location = new System.Drawing.Point(570, 737);
+            this.GeneratedPasswordLabel.Font = new System.Drawing.Font("Segoe UI Semilight", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.GeneratedPasswordLabel.Location = new System.Drawing.Point(465, 760);
             this.GeneratedPasswordLabel.Name = "GeneratedPasswordLabel";
-            this.GeneratedPasswordLabel.Size = new System.Drawing.Size(145, 65);
+            this.GeneratedPasswordLabel.Size = new System.Drawing.Size(0, 51);
             this.GeneratedPasswordLabel.TabIndex = 53;
-            this.GeneratedPasswordLabel.Text = "label1";
+            this.GeneratedPasswordLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // SimplePasswordGroupBox
             // 
+            this.SimplePasswordGroupBox.Controls.Add(this.LowercaseLettersCheckBox);
             this.SimplePasswordGroupBox.Controls.Add(this.AddCharactersRadioButton);
             this.SimplePasswordGroupBox.Controls.Add(this.ReplaceRadioButton);
             this.SimplePasswordGroupBox.Controls.Add(this.SimpleKeywordLabel);
             this.SimplePasswordGroupBox.Controls.Add(this.KeywordTextbox);
             this.SimplePasswordGroupBox.Controls.Add(this.CapitalLettersCheckBox);
+            this.SimplePasswordGroupBox.Controls.Add(this.SpecialCharsCheckBox);
             this.SimplePasswordGroupBox.Controls.Add(this.NumbersCheckBox);
             this.SimplePasswordGroupBox.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.SimplePasswordGroupBox.Location = new System.Drawing.Point(156, 203);
@@ -270,33 +275,43 @@
             // CharacterNumberLabel
             // 
             this.CharacterNumberLabel.AutoSize = true;
-            this.CharacterNumberLabel.Location = new System.Drawing.Point(547, 535);
+            this.CharacterNumberLabel.Location = new System.Drawing.Point(609, 535);
             this.CharacterNumberLabel.Name = "CharacterNumberLabel";
-            this.CharacterNumberLabel.Size = new System.Drawing.Size(61, 30);
+            this.CharacterNumberLabel.Size = new System.Drawing.Size(24, 30);
             this.CharacterNumberLabel.TabIndex = 56;
-            this.CharacterNumberLabel.Text = "label1";
+            this.CharacterNumberLabel.Text = "6";
+            this.CharacterNumberLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // CharactersLabel
             // 
             this.CharactersLabel.AutoSize = true;
-            this.CharactersLabel.Location = new System.Drawing.Point(619, 535);
+            this.CharactersLabel.Location = new System.Drawing.Point(638, 535);
             this.CharactersLabel.Name = "CharactersLabel";
             this.CharactersLabel.Size = new System.Drawing.Size(101, 30);
             this.CharactersLabel.TabIndex = 57;
             this.CharactersLabel.Text = "characters";
+            // 
+            // LowercaseLettersCheckBox
+            // 
+            this.LowercaseLettersCheckBox.AutoSize = true;
+            this.LowercaseLettersCheckBox.Location = new System.Drawing.Point(418, 116);
+            this.LowercaseLettersCheckBox.Name = "LowercaseLettersCheckBox";
+            this.LowercaseLettersCheckBox.Size = new System.Drawing.Size(183, 34);
+            this.LowercaseLettersCheckBox.TabIndex = 53;
+            this.LowercaseLettersCheckBox.Text = "Lowercase letters";
+            this.LowercaseLettersCheckBox.UseVisualStyleBackColor = true;
             // 
             // GeneratePasswordForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
-            this.ClientSize = new System.Drawing.Size(1120, 978);
+            this.ClientSize = new System.Drawing.Size(1120, 1007);
             this.Controls.Add(this.CharactersLabel);
             this.Controls.Add(this.CharacterNumberLabel);
             this.Controls.Add(this.PasswordTypeGroupBox);
             this.Controls.Add(this.GeneratedPasswordLabel);
             this.Controls.Add(this.SaveButton);
-            this.Controls.Add(this.SpecialCharsCheckBox);
             this.Controls.Add(this.LenghtLabel);
             this.Controls.Add(this.LenghtTrackBar);
             this.Controls.Add(this.GeneratePasswordButton);
@@ -343,5 +358,6 @@
         private GroupBox PasswordTypeGroupBox;
         private Label CharacterNumberLabel;
         private Label CharactersLabel;
+        private CheckBox LowercaseLettersCheckBox;
     }
 }

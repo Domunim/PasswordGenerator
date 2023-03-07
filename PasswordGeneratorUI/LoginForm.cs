@@ -1,10 +1,23 @@
+using PasswordGeneratorLibrary;
+using System.Xml.Linq;
+using System;
+
 namespace PasswordGeneratorUI
 {
     public partial class LoginForm : Form
     {
+        internal static string? chosenUser;
+
         public LoginForm()
         {
             InitializeComponent();
+
+            List<UserModel> users = TextFileConnector.ListAllUsers();
+
+            foreach (UserModel u in users)
+            {
+                UserChoiceComboBox.Items.Add(u);
+            }
         }
 
         private void ShowPasswordCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -18,7 +31,7 @@ namespace PasswordGeneratorUI
         }
 
         private void CreateUserButton_Click(object sender, EventArgs e)
-        {
+        {         
             CreateUserForm createUserForm = new();
             createUserForm.Show();
         }
@@ -27,8 +40,10 @@ namespace PasswordGeneratorUI
         {
             if (ValidateForm())
             {
-                // TODO - Pass selected username to Deletion Form
+                chosenUser = UserChoiceComboBox.Text;
+
                 UserDeletionConfirmationForm deleteUserForm = new();
+
                 deleteUserForm.Show();
             }
             else
@@ -41,9 +56,10 @@ namespace PasswordGeneratorUI
         {         
             if (ValidateForm())
             {
-                // Take username and passes to the form to display only passwords assigned to the user
+                chosenUser = UserChoiceComboBox.Text;
 
                 PasswordManagerMainScreen mainScreen = new();
+
                 mainScreen.Show();
 
             }
@@ -65,11 +81,8 @@ namespace PasswordGeneratorUI
             {
                 return false;
             }                
-            
-            //TODO - load a password from a UserModel file and check if it is correct,
-            //add a method's argument of username to fetch the password
 
-            else if (UsersPasswordTextbox.Text != "password_loaded_placeholder") // password loaded from the file
+            else if (TextFileConnector.CheckUsersPassword(UserChoiceComboBox.SelectedItem.ToString(), UsersPasswordTextbox.Text))
             {
                 return false;
             }

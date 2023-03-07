@@ -13,12 +13,26 @@ namespace PasswordGeneratorLibrary
 
         private const string UsersFile = "UserModels.csv";
         private const string PasswordsFile = "PasswordModels.csv";
+        public static string? chosenUser;
 
+        /// <summary>
+        /// Loads a list of all users.
+        /// </summary>
+        /// <returns>list of UserModels</returns>
+        public static List<UserModel> ListAllUsers()
+        {
+            List<UserModel> users = UsersFile.FullFilePath().LoadFile().ConvertToUserModels();
+            return users;
+        }
+        
+        
         public UserModel CreateUser(UserModel model)
         {
             // Loads a text file and converts it to a list of UserModels
 
-            List<UserModel> users = UsersFile.FullFilePath().LoadFile().ConvertToUserModels();
+            //previously - List<UserModel> users = UsersFile.FullFilePath().LoadFile().ConvertToUserModels();
+
+            List<UserModel> users = ListAllUsers();
 
             users.Add(model);
 
@@ -50,7 +64,7 @@ namespace PasswordGeneratorLibrary
             string newUserName = newUser.UserName;
             bool uniqueUsername = true;
 
-            List<UserModel> users = UsersFile.FullFilePath().LoadFile().ConvertToUserModels();
+            List<UserModel> users = ListAllUsers();
 
             foreach (UserModel u in users)
             {
@@ -71,6 +85,69 @@ namespace PasswordGeneratorLibrary
             }
 
         }
+
+        /// <summary>
+        /// Deletes a selected user from the file.
+        /// </summary>
+        /// <param name="chosenUser"></param>
+        public static void DeleteUser (string chosenUser)
+        {
+            // TODO - does not work (does not delete)
+
+            List<UserModel> users = ListAllUsers();
+
+            foreach (UserModel u in users)
+            {
+                if (u.UserName.ToLower() == chosenUser.ToLower())
+                {
+                    users.Remove(u);
+
+                    break;
+                }
+            }
+
+            TextFileProcessor.SaveToUserFile(users, UsersFile);
+
+        }
+
+        /// <summary>
+        /// Checks if the given word matches the user's password.
+        /// </summary>
+        /// <param name="chosenUser"></param>
+        /// <param name="comparedPassword"></param>
+        /// <returns>boolean if the password is the same as user's one</returns>
+        public static bool CheckUsersPassword(string chosenUser, string comparedPassword)
+        {
+
+            // TODO - does not work, logs in even with null paswword
+
+            bool passwordMatching = false;
+
+            List<UserModel> users = ListAllUsers();
+
+            foreach (UserModel u in users)
+            {
+                if (u.UserName == chosenUser)
+                {
+                    if (u.UserPassword == comparedPassword)
+                    {
+                        passwordMatching = true;
+                        break;
+                    }
+                }
+            }
+
+            if (passwordMatching)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
 
         /// <summary>
         /// Generates a string of pseudo-random characters of given length.

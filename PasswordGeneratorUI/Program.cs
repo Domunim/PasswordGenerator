@@ -12,14 +12,12 @@ namespace PasswordGeneratorUI
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-            //Application.Run(new LoginForm());
+            Application.Run(new LoginForm());
 
-            // test forms
+            // test forms below
             //Application.Run(new CreateUserForm());
-            Application.Run(new GeneratePasswordForm());
-            //Application.Run(new UserDeletionConfirmationForm());
-            //Application.Run(new LoginForm());
-           
+            //Application.Run(new GeneratePasswordForm());
+            //Application.Run(new UserDeletionConfirmationForm());           
         }
     }
 }

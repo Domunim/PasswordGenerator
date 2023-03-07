@@ -126,10 +126,9 @@ namespace PasswordGeneratorUI
         {
             if (newPassword != "")
             {
-                // Saves the value of the newPassword to a file, refreshes the listbox
 
                 PasswordModel p = new();
-                p.Owner = // TODO - pass a logged user from another form
+                p.Owner = LoginForm.chosenUser;
                 p.GeneratedPassword = newPassword;
 
                 TextFileConnector txtConnector = new();
@@ -137,6 +136,7 @@ namespace PasswordGeneratorUI
                 txtConnector.CreatePassword(p);
 
                 // TODO - check if action refreshes the listbox in manager form
+                // maybe load the password file again to the combobox here
 
                 Close();
 

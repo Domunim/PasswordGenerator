@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PasswordGeneratorLibrary;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,13 +26,10 @@ namespace PasswordGeneratorUI
 
         private void UserDeletionConfirmationButton_Click(object sender, EventArgs e)
         {
-            // TODO - delete user logic
 
-            // takes a username from deletingUser
-            // if == deletes from the List
-            // saves back
+            TextFileConnector.DeleteUser(LoginForm.chosenUser);
 
-            MessageBox.Show("The user has been deleted.");
+            MessageBox.Show($"The user {LoginForm.chosenUser} has been deleted.");
 
             Close();
         }

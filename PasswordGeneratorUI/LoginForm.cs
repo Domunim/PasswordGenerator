@@ -1,10 +1,23 @@
+using PasswordGeneratorLibrary;
+using System.Xml.Linq;
+using System;
+
 namespace PasswordGeneratorUI
 {
     public partial class LoginForm : Form
     {
+        internal static string? chosenUser;
+
         public LoginForm()
         {
             InitializeComponent();
+
+            List<UserModel> users = TextFileConnector.ListAllUsers();
+
+            foreach (UserModel u in users)
+            {
+                UserChoiceComboBox.Items.Add(u);
+            }
         }
 
         private void ShowPasswordCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -18,16 +31,20 @@ namespace PasswordGeneratorUI
         }
 
         private void CreateUserButton_Click(object sender, EventArgs e)
-        {
-            //Application.Run(new CreateUserForm());
+        {         
+            CreateUserForm createUserForm = new();
+            createUserForm.Show();
         }
 
         private void DeleteUserButton_Click(object sender, EventArgs e)
         {
             if (ValidateForm())
             {
-                // Pass selected username to Deletion Form
-                //UserDeletionConfirmationForm();
+                chosenUser = UserChoiceComboBox.Text;
+
+                UserDeletionConfirmationForm deleteUserForm = new();
+
+                deleteUserForm.Show();
             }
             else
             {
@@ -39,9 +56,12 @@ namespace PasswordGeneratorUI
         {         
             if (ValidateForm())
             {
-                //Take username
-                // passes to the form to display only passwords assigned to the user
-                //open PasswordManagerMainScreen();
+                chosenUser = UserChoiceComboBox.Text;
+
+                PasswordManagerMainScreen mainScreen = new();
+
+                mainScreen.Show();
+
             }
             else
             {
@@ -56,19 +76,18 @@ namespace PasswordGeneratorUI
         /// <returns></returns>
         private bool ValidateForm()
         {
-            bool output = true;
-            // TODO - tweak the combobox selection
-            if (UserChoiceComboBox.selection == 0) 
-            {
-                output = false;
-            }
-            // TODO - load a password from a UserModel file and check if it is correct
-            if (UsersPasswordTextbox.Text != "blabla")
-            {
-                output = false;
-            }
 
-            return output;
+            if (UserChoiceComboBox.SelectedItem == null)
+            {
+                return false;
+            }                
+
+            else if (TextFileConnector.CheckUsersPassword(UserChoiceComboBox.SelectedItem.ToString(), UsersPasswordTextbox.Text))
+            {
+                return false;
+            }
+            
+            return true;
         }
     }
 }

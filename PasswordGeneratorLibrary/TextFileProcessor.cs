@@ -14,7 +14,7 @@ namespace PasswordGeneratorLibrary.TextFileTools
         /// </summary>
         /// <param name="fileName"></param>
         /// <returns>a full text file path</returns>
-        public static string FullFilePath(this string fileName) // {Something}Model.csv
+        public static string FullFilePath(this string fileName)
         {
             return $"C:\\Users\\User\\source\\repos\\PasswordGenerator\\data\\{fileName}";
         }
@@ -77,57 +77,9 @@ namespace PasswordGeneratorLibrary.TextFileTools
             return output;
         }
 
+    // Convert all users to a List<string> & save it to a text file
 
-        // TODO - Method that checks if a username is used
-
-        /// <summary>
-        /// Checks if a chosen username is already used.
-        /// </summary>
-        /// <param name="models"></param>
-        /// <param name="newUser"></param>
-        /// <returns>boolean 'true' if username is used</returns>
-        //public static bool CheckIfUsedUsername(this List<UserModel> models, UserModel newUser)
-        //{
-        //    string newUserName = newUser.UserName;
-
-
-
-        //   foreach (UserModel u in models)
-        //    {
-        //        if (u.UserName == newUserName)
-        //        {
-        //            return true;
-        //        }
-        //        else
-        //        {
-        //            return false;
-        //        }
-        //    }
-
-        //}
-
-        //bool usedUsername = false;
-
-        //do while (!usedUsername)
-        //{
-        //   foreach (UserModel u in models)
-        //   {
-        //      if (u.UserName == newUserName)
-        //
-        //      {
-        //          return true;
-        //      }
-
-        //      else
-
-        //      {
-        //          return false;
-        //      }
-        //}
-
-        // Convert all users to a List<string> & save it to a text file
-
-        public static void SaveToUserFile(this List<UserModel> models, string fileName)
+    public static void SaveToUserFile(this List<UserModel> models, string fileName)
         {
             List<string> lines = new();
 

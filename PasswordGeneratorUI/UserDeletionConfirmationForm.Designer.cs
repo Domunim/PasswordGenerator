@@ -40,7 +40,7 @@
             this.UserDeletionConfirmationButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UserDeletionConfirmationButton.Font = new System.Drawing.Font("Segoe UI Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.UserDeletionConfirmationButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
-            this.UserDeletionConfirmationButton.Location = new System.Drawing.Point(114, 130);
+            this.UserDeletionConfirmationButton.Location = new System.Drawing.Point(118, 130);
             this.UserDeletionConfirmationButton.Name = "UserDeletionConfirmationButton";
             this.UserDeletionConfirmationButton.Size = new System.Drawing.Size(210, 44);
             this.UserDeletionConfirmationButton.TabIndex = 11;
@@ -54,7 +54,7 @@
             this.UserDeletionRejectionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UserDeletionRejectionButton.Font = new System.Drawing.Font("Segoe UI Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.UserDeletionRejectionButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
-            this.UserDeletionRejectionButton.Location = new System.Drawing.Point(114, 180);
+            this.UserDeletionRejectionButton.Location = new System.Drawing.Point(118, 180);
             this.UserDeletionRejectionButton.Name = "UserDeletionRejectionButton";
             this.UserDeletionRejectionButton.Size = new System.Drawing.Size(210, 44);
             this.UserDeletionRejectionButton.TabIndex = 10;
@@ -66,11 +66,11 @@
             // 
             this.UserDeleteHeader.AutoSize = true;
             this.UserDeleteHeader.Font = new System.Drawing.Font("Segoe UI Light", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.UserDeleteHeader.Location = new System.Drawing.Point(93, 59);
+            this.UserDeleteHeader.Location = new System.Drawing.Point(75, 58);
             this.UserDeleteHeader.Name = "UserDeleteHeader";
-            this.UserDeleteHeader.Size = new System.Drawing.Size(61, 30);
+            this.UserDeleteHeader.Size = new System.Drawing.Size(297, 30);
             this.UserDeleteHeader.TabIndex = 12;
-            this.UserDeleteHeader.Text = "label1";
+            this.UserDeleteHeader.Text = "Are you sure to delete the user?";
             // 
             // UserDeletionConfirmationForm
             // 

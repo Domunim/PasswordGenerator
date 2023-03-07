@@ -8,6 +8,6 @@ namespace PasswordGeneratorLibrary
 {
     public class GeneratorModel
     {
-        // TODO - create a generator model
+        // TODO - create a generator or delete the model
     }
 }

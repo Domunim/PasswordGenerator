@@ -12,16 +12,12 @@ namespace PasswordGeneratorUI
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-            // below not used if initiated in CreateUserForm
-            // PasswordGeneratorLibrary.TextFileConnector txtConnector = new();
+            Application.Run(new LoginForm());
 
-            //Application.Run(new LoginForm()); - final start form
-
-            // test forms
+            // test forms below
             //Application.Run(new CreateUserForm());
             //Application.Run(new GeneratePasswordForm());
-            //Application.Run(new UserDeletionConfirmationForm());
-            Application.Run(new LoginForm());
+            //Application.Run(new UserDeletionConfirmationForm());           
         }
     }
 }

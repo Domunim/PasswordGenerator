@@ -1,4 +1,6 @@
-﻿namespace PasswordGeneratorUI
+﻿using PasswordGeneratorLibrary;
+
+namespace PasswordGeneratorUI
 {
     partial class LoginForm
     {
@@ -55,6 +57,7 @@
             this.ShowPasswordCheckBox.TabIndex = 24;
             this.ShowPasswordCheckBox.Text = "Show password";
             this.ShowPasswordCheckBox.UseVisualStyleBackColor = true;
+            this.ShowPasswordCheckBox.CheckedChanged += new System.EventHandler(this.ShowPasswordCheckBox_CheckedChanged);
             // 
             // CreateUserButton
             // 
@@ -145,6 +148,8 @@
             this.UserChoiceComboBox.Name = "UserChoiceComboBox";
             this.UserChoiceComboBox.Size = new System.Drawing.Size(301, 38);
             this.UserChoiceComboBox.TabIndex = 26;
+            this.UserChoiceComboBox.DisplayMember = "Username";
+            this.UserChoiceComboBox.ValueMember = "Username";
             // 
             // LoginButton
             // 

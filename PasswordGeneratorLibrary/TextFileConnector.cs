@@ -92,21 +92,23 @@ namespace PasswordGeneratorLibrary
         /// <param name="chosenUser"></param>
         public static void DeleteUser (string chosenUser)
         {
-            // TODO - does not work (does not delete)
+            // TODO - does not work (does not delete) // changed, to be checked
 
             List<UserModel> users = ListAllUsers();
 
             foreach (UserModel u in users)
             {
-                if (u.UserName.ToLower() == chosenUser.ToLower())
+                if (u.UserName.ToLower() == chosenUser.ToLower()) // is .ToLower necessary? Only in creation
                 {
                     users.Remove(u);
+                    
+                    TextFileProcessor.SaveToUserFile(users, UsersFile); // added here and commented out below
 
                     break;
                 }
             }
 
-            TextFileProcessor.SaveToUserFile(users, UsersFile);
+            // TextFileProcessor.SaveToUserFile(users, UsersFile); // previously here, was compiling but not deleting
 
         }
 
@@ -119,7 +121,7 @@ namespace PasswordGeneratorLibrary
         public static bool CheckUsersPassword(string chosenUser, string comparedPassword)
         {
 
-            // TODO - does not work, logs in even with null paswword
+            // TODO - does not work, logs in even with null paswword // why, always returns true?
 
             bool passwordMatching = false;
 

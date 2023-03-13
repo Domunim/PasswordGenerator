@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PasswordGeneratorLibrary
+namespace PasswordGeneratorLibrary.DataModels
 {
     public class UserModel
     {

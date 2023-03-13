@@ -1,4 +1,5 @@
 ﻿using PasswordGeneratorLibrary;
+using PasswordGeneratorLibrary.DataModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -71,14 +72,14 @@ namespace PasswordGeneratorUI
 
                         if (ReplaceRadioButton.Checked)
                         {
-                            newPassword = TextFileConnector.GenerateSimplePassword(finalLength, TextFileConnector.ReplaceKeywordChars(keyword), charType);
+                            newPassword = PasswordGeneratingLogic.GenerateSimplePassword(finalLength, PasswordGeneratingLogic.ReplaceKeywordChars(keyword), charType);
                         }
 
                         else
                         {
                             if (charType != "")
                             {
-                                newPassword = TextFileConnector.GenerateSimplePassword(finalLength, keyword, charType);
+                                newPassword = PasswordGeneratingLogic.GenerateSimplePassword(finalLength, keyword, charType);
                             }
                             else
                             {
@@ -101,7 +102,7 @@ namespace PasswordGeneratorUI
 
             if (ComplexRadioButton.Checked)
             {
-                newPassword = TextFileConnector.GenerateRandomPart(finalLength, allCharType);
+                newPassword = PasswordGeneratingLogic.GenerateRandomPart(finalLength, allCharType);
             }
             
             GeneratedPasswordLabel.Text = $"{newPassword}";
@@ -131,12 +132,11 @@ namespace PasswordGeneratorUI
                 p.Owner = LoginForm.chosenUser;
                 p.GeneratedPassword = newPassword;
 
-                TextFileConnector txtConnector = new();
+                PasswordsFileConnector txtConnector = new();
 
                 txtConnector.CreatePassword(p);
 
-                // TODO - check if action refreshes the listbox in manager form
-                // maybe load the password file again to the combobox here
+                PasswordManagerMainScreen.RefreshListbox();
 
                 Close();
 

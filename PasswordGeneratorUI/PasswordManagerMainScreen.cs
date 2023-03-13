@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PasswordGeneratorLibrary;
+using PasswordGeneratorLibrary.DataModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +18,8 @@ namespace PasswordGeneratorUI
         public PasswordManagerMainScreen()
         {
             InitializeComponent();
+
+            RefreshListbox();
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
@@ -35,13 +39,27 @@ namespace PasswordGeneratorUI
         {
             if (ValidateForm())
             {
-                // TODO - Pass selected password and deletes it from the list and file
+                PasswordsFileConnector.DeletePassword(PasswordListBox.SelectedItem.ToString());
+
+                RefreshListbox();
             }
             else
             {
                 MessageBox.Show("Select a password to be deleted.");
             }
         }
+
+        public void RefreshListbox()
+        {
+            List<PasswordModel> passwords = PasswordsFileConnector.ListAllPasswords();
+
+            foreach (PasswordModel p in passwords)
+            {
+                PasswordListBox.Items.Add(p);
+            }
+
+        }
+
 
         /// <summary>
         /// Checks if a user is selected and a correct password is provided.
@@ -54,6 +72,7 @@ namespace PasswordGeneratorUI
             {
                 return false;
             }
+            
             else
             {
                 return true;

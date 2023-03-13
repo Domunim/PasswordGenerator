@@ -13,11 +13,7 @@ namespace PasswordGeneratorUI
             ApplicationConfiguration.Initialize();
 
             Application.Run(new LoginForm());
-
-            // test forms below
-            //Application.Run(new CreateUserForm());
-            //Application.Run(new GeneratePasswordForm());
-            //Application.Run(new UserDeletionConfirmationForm());           
+       
         }
     }
 }

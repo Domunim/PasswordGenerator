@@ -1,4 +1,5 @@
 ﻿using PasswordGeneratorLibrary;
+using PasswordGeneratorLibrary.DataModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,12 +32,14 @@ namespace PasswordGeneratorUI
                 model.UserName = UsernameValue.Text;
                 model.UserPassword = UserPasswordValue.Text;
 
-                if (TextFileConnector.CheckIfUsedUsername(model))
+                if (Validation.CheckIfUsedUsername(model))
                 {
-                    TextFileConnector txtConnector = new();
+                    UsersFileConnector txtConnector = new();
 
                     txtConnector.CreateUser(model);
-                    
+
+                    LoginForm.RefreshCombobox();
+
                     Close();
                 }
 

@@ -27,9 +27,11 @@ namespace PasswordGeneratorUI
         private void UserDeletionConfirmationButton_Click(object sender, EventArgs e)
         {
 
-            TextFileConnector.DeleteUser(LoginForm.chosenUser);
+            UsersFileConnector.DeleteUser(LoginForm.chosenUser);
 
             MessageBox.Show($"The user {LoginForm.chosenUser} has been deleted.");
+
+            LoginForm.RefreshCombobox();
 
             Close();
         }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using PasswordGeneratorLibrary.DataModels;
 
 namespace PasswordGeneratorLibrary.TextFileTools
 {
@@ -68,7 +69,7 @@ namespace PasswordGeneratorLibrary.TextFileTools
             foreach (string line in lines)
             {
                 string[] columns = line.Split(',');
-
+                // TODO - check if a comma in password and user breaks the column wrapping
                 PasswordModel p = new();
                 p.Owner = columns[0];
                 p.GeneratedPassword = columns[1];
@@ -77,9 +78,12 @@ namespace PasswordGeneratorLibrary.TextFileTools
             return output;
         }
 
-    // Convert all users to a List<string> & save it to a text file
-
-    public static void SaveToUserFile(this List<UserModel> models, string fileName)
+        /// <summary>
+        /// Converts all users to a List<string> & saves it to a text file.
+        /// </summary>
+        /// <param name="models"></param>
+        /// <param name="fileName"></param>
+        public static void SaveToUserFile(this List<UserModel> models, string fileName)
         {
             List<string> lines = new();
 
@@ -92,8 +96,11 @@ namespace PasswordGeneratorLibrary.TextFileTools
 
         }
 
-        // Convert all passwords to a List<string> & save it to a text file
-
+        /// <summary>
+        /// Converts all passwords to a List<string> & saves it to a text file.
+        /// </summary>
+        /// <param name="models"></param>
+        /// <param name="fileName"></param>
         public static void SaveToPasswordFile(this List<PasswordModel> models, string fileName)
         {
             List<string> lines = new();

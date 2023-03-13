@@ -1,6 +1,7 @@
 using PasswordGeneratorLibrary;
 using System.Xml.Linq;
 using System;
+using PasswordGeneratorLibrary.DataModels;
 
 namespace PasswordGeneratorUI
 {
@@ -12,12 +13,7 @@ namespace PasswordGeneratorUI
         {
             InitializeComponent();
 
-            List<UserModel> users = TextFileConnector.ListAllUsers();
-
-            foreach (UserModel u in users)
-            {
-                UserChoiceComboBox.Items.Add(u);
-            }
+            RefreshCombobox();
         }
 
         private void ShowPasswordCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -76,18 +72,28 @@ namespace PasswordGeneratorUI
         /// <returns></returns>
         private bool ValidateForm()
         {
-
-            if (UserChoiceComboBox.SelectedItem == null)
+            if (UserChoiceComboBox.SelectedItem != null && 
+                Validation.CheckUsersPassword(UserChoiceComboBox.SelectedItem.ToString(), UsersPasswordTextbox.Text))
             {
-                return false;
-            }                
+                return true;
+            }
 
-            else if (TextFileConnector.CheckUsersPassword(UserChoiceComboBox.SelectedItem.ToString(), UsersPasswordTextbox.Text))
+            else
             {
                 return false;
             }
-            
-            return true;
         }
+
+        public void RefreshCombobox()
+        {
+            List<UserModel> users = UsersFileConnector.ListAllUsers();
+
+            foreach (UserModel u in users)
+            {
+                UserChoiceComboBox.Items.Add(u);
+            }
+        }
+
+
     }
 }

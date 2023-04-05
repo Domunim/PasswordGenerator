@@ -31,7 +31,8 @@ namespace PasswordGeneratorUI
 
             MessageBox.Show($"The user {LoginForm.chosenUser} has been deleted.");
 
-            LoginForm.RefreshCombobox();
+            LoginForm form = new();
+            form.RefreshCombobox();
 
             Close();
         }

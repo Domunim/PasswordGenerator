@@ -136,7 +136,9 @@ namespace PasswordGeneratorUI
 
                 txtConnector.CreatePassword(p);
 
-                PasswordManagerMainScreen.RefreshListbox();
+                // TODO - still does not refresh, does it refer to another instance? + the same with Combo
+                PasswordManagerMainScreen form = new();
+                form.RefreshListbox();
 
                 Close();
 

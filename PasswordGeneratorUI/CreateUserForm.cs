@@ -37,8 +37,9 @@ namespace PasswordGeneratorUI
                     UsersFileConnector txtConnector = new();
 
                     txtConnector.CreateUser(model);
-
-                    LoginForm.RefreshCombobox();
+                    
+                    LoginForm form = new();
+                    form.RefreshCombobox();
 
                     Close();
                 }

@@ -65,9 +65,10 @@ namespace PasswordGeneratorUI
                             charType += "0123456789";
                         }
 
+                        // not using a comma as it breaks the CSV file
                         if (SpecialCharsCheckBox.Checked)
                         {
-                            charType += "~`!@#$%^&*()_-+={}[]:;<>,.?/";
+                            charType += "~`!@#$%^&*()_-+={}[]:;<>.?/";
                         }
 
                         if (ReplaceRadioButton.Checked)

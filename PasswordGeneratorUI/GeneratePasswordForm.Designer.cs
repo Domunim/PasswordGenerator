@@ -47,10 +47,10 @@
             this.ReplaceRadioButton = new System.Windows.Forms.RadioButton();
             this.GeneratedPasswordLabel = new System.Windows.Forms.Label();
             this.SimplePasswordGroupBox = new System.Windows.Forms.GroupBox();
+            this.LowercaseLettersCheckBox = new System.Windows.Forms.CheckBox();
             this.PasswordTypeGroupBox = new System.Windows.Forms.GroupBox();
             this.CharacterNumberLabel = new System.Windows.Forms.Label();
             this.CharactersLabel = new System.Windows.Forms.Label();
-            this.LowercaseLettersCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.LenghtTrackBar)).BeginInit();
             this.SimplePasswordGroupBox.SuspendLayout();
             this.PasswordTypeGroupBox.SuspendLayout();
@@ -260,6 +260,16 @@
             this.SimplePasswordGroupBox.TabStop = false;
             this.SimplePasswordGroupBox.Text = "Simple Password";
             // 
+            // LowercaseLettersCheckBox
+            // 
+            this.LowercaseLettersCheckBox.AutoSize = true;
+            this.LowercaseLettersCheckBox.Location = new System.Drawing.Point(418, 116);
+            this.LowercaseLettersCheckBox.Name = "LowercaseLettersCheckBox";
+            this.LowercaseLettersCheckBox.Size = new System.Drawing.Size(183, 34);
+            this.LowercaseLettersCheckBox.TabIndex = 53;
+            this.LowercaseLettersCheckBox.Text = "Lowercase letters";
+            this.LowercaseLettersCheckBox.UseVisualStyleBackColor = true;
+            // 
             // PasswordTypeGroupBox
             // 
             this.PasswordTypeGroupBox.Controls.Add(this.ComplexRadioButton);
@@ -291,21 +301,13 @@
             this.CharactersLabel.TabIndex = 57;
             this.CharactersLabel.Text = "characters";
             // 
-            // LowercaseLettersCheckBox
-            // 
-            this.LowercaseLettersCheckBox.AutoSize = true;
-            this.LowercaseLettersCheckBox.Location = new System.Drawing.Point(418, 116);
-            this.LowercaseLettersCheckBox.Name = "LowercaseLettersCheckBox";
-            this.LowercaseLettersCheckBox.Size = new System.Drawing.Size(183, 34);
-            this.LowercaseLettersCheckBox.TabIndex = 53;
-            this.LowercaseLettersCheckBox.Text = "Lowercase letters";
-            this.LowercaseLettersCheckBox.UseVisualStyleBackColor = true;
-            // 
             // GeneratePasswordForm
             // 
+            this.AcceptButton = this.GeneratePasswordButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
+            this.CancelButton = this.BackButton;
             this.ClientSize = new System.Drawing.Size(1120, 1007);
             this.Controls.Add(this.CharactersLabel);
             this.Controls.Add(this.CharacterNumberLabel);

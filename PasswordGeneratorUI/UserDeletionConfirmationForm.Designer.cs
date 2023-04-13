@@ -74,9 +74,11 @@
             // 
             // UserDeletionConfirmationForm
             // 
+            this.AcceptButton = this.UserDeletionConfirmationButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
+            this.CancelButton = this.UserDeletionRejectionButton;
             this.ClientSize = new System.Drawing.Size(459, 300);
             this.Controls.Add(this.UserDeleteHeader);
             this.Controls.Add(this.UserDeletionConfirmationButton);

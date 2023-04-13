@@ -44,7 +44,7 @@ namespace PasswordGeneratorUI
             }
             else
             {
-                MessageBox.Show("Select a user and provide the password to delete the user.");
+                MessageBox.Show("Select a user and provide a valid password to delete the user.");
             }
         }
 
@@ -61,7 +61,7 @@ namespace PasswordGeneratorUI
             }
             else
             {
-                MessageBox.Show("Select a user and provide the password to log in.");
+                MessageBox.Show("Select a user and provide a valid password to log in.");
             }
 
         }

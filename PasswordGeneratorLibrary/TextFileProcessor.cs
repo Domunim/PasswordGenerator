@@ -69,7 +69,6 @@ namespace PasswordGeneratorLibrary.TextFileTools
             foreach (string line in lines)
             {
                 string[] columns = line.Split(',');
-                // TODO - check if a comma in password and user breaks the column wrapping
                 PasswordModel p = new();
                 p.Owner = columns[0];
                 p.GeneratedPassword = columns[1];

@@ -142,13 +142,13 @@ namespace PasswordGeneratorUI
             // UserChoiceComboBox
             // 
             this.UserChoiceComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
+            this.UserChoiceComboBox.DisplayMember = "Username";
             this.UserChoiceComboBox.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.UserChoiceComboBox.FormattingEnabled = true;
             this.UserChoiceComboBox.Location = new System.Drawing.Point(247, 271);
             this.UserChoiceComboBox.Name = "UserChoiceComboBox";
             this.UserChoiceComboBox.Size = new System.Drawing.Size(301, 38);
             this.UserChoiceComboBox.TabIndex = 26;
-            this.UserChoiceComboBox.DisplayMember = "Username";
             this.UserChoiceComboBox.ValueMember = "Username";
             // 
             // LoginButton
@@ -187,9 +187,11 @@ namespace PasswordGeneratorUI
             // 
             // LoginForm
             // 
+            this.AcceptButton = this.LoginButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
+            this.CancelButton = this.ExitButton;
             this.ClientSize = new System.Drawing.Size(779, 576);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.PasswordGeneratorHeader);

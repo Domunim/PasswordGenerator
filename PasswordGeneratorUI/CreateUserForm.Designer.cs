@@ -61,9 +61,6 @@
             this.CreateUserButton.TabIndex = 14;
             this.CreateUserButton.Text = "Create a new user";
             this.CreateUserButton.UseVisualStyleBackColor = false;
-            CreateUserForm createUserForm = this;
-            EventHandler eventHandler = new System.EventHandler(createUserForm.CreateUserButton_Click);
-            this.CreateUserButton.Click += eventHandler;
             // 
             // BackButton
             // 
@@ -131,9 +128,11 @@
             // 
             // CreateUserForm
             // 
+            this.AcceptButton = this.CreateUserButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
+            this.CancelButton = this.BackButton;
             this.ClientSize = new System.Drawing.Size(662, 370);
             this.Controls.Add(this.ShowPasswordCheckBox);
             this.Controls.Add(this.UsernameValue);

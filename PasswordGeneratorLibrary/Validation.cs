@@ -50,7 +50,7 @@ namespace PasswordGeneratorLibrary
         public static bool CheckUsersPassword(string chosenUser, string comparedPassword)
         {
 
-            // TODO - does not work, always returns false
+            // TODO - does not work, always returns false; try breakpoints
             // TODO - unit testing for this method
 
             bool passwordMatching = false;
